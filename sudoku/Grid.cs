@@ -12,13 +12,13 @@ namespace sudoku
     {
         private int Size = 9;
         private int CellSize = 30;
-        private Button[,] Field;
+        private Label[,] Field;
 
 
         public Grid(int size, int cellSize, int startX, int startY, MainForm parent)
         {
             Size = size;
-            Field = new Button[Size, Size];
+            Field = new Label[Size, Size];
 
             // Generating field
             int horizontal = startX;
@@ -28,10 +28,13 @@ namespace sudoku
                 for (int j = 0; j < Size; j++) {
 
                     // Creating new button
-                    Field[i, j] = new Button()
+                    Field[i, j] = new Label()
                     {
                         Size = new Size(cellSize, cellSize),
-                        Location = new Point(horizontal, vertical)
+                        Location = new Point(horizontal, vertical),
+                        BorderStyle = BorderStyle.FixedSingle,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        AutoSize = false
                     };
 
                     // Adding click event
