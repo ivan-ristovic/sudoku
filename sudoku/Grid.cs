@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sudoku
@@ -27,14 +23,15 @@ namespace sudoku
             for (int i = 0; i < Size; i++) {
                 for (int j = 0; j < Size; j++) {
 
-                    // Creating new button
+                    // Creating new label
                     Field[i, j] = new Label()
                     {
                         Size = new Size(cellSize, cellSize),
                         Location = new Point(horizontal, vertical),
                         BorderStyle = BorderStyle.FixedSingle,
                         TextAlign = ContentAlignment.MiddleCenter,
-                        AutoSize = false
+                        AutoSize = false,
+                        Tag = new GridLocation(i, j)
                     };
 
                     // Adding click event
@@ -52,6 +49,21 @@ namespace sudoku
                 vertical += cellSize;
             }
         }
+
+
+        // Helper class, whose instances will hold indexes of corresponding label in Field array
+        internal class GridLocation
+        {
+            public readonly int i;
+            public readonly int j;
+
+            public GridLocation(int i, int j)
+            {
+                this.i = i;
+                this.j = j;
+            }
+        }
+
 
         private void OnFieldClick(object sender, EventArgs e)
         {

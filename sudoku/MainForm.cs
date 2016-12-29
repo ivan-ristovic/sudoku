@@ -21,5 +21,6 @@ namespace sudoku
         {
             MainGrid = new Grid(GRID_SIZE, CELL_SIZE, 20, 40, this);
         }
+
     }
 }

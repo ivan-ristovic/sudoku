@@ -56,8 +56,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(309, 326);
             this.Controls.Add(this.msMainMenu);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.msMainMenu;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Sudoku";
             this.Load += new System.EventHandler(this.MainForm_Load);
