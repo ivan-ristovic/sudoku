@@ -6,38 +6,39 @@ namespace sudoku
 {
     class SudokuGrid
     {
-        private int Size = 9;
+        private int GridSize;
+        private int BoxSize;
         private int CellSize;
         private Label[,] Field;
 
 
         public SudokuGrid(int size, int cellSize, int startX, int startY, MainForm parent)
         {
-            Size = size;
+            GridSize = size;
             CellSize = cellSize;
-            Field = new Label[Size, Size];
+            Field = new Label[GridSize, GridSize];
 
             // Label creation locations
             int horizontal = startX;
             int vertical = startY;
 
             // Specifies after how many labels we make space
-            int spaceIndex = size / (int)Math.Sqrt(size);
+            BoxSize = size / (int)Math.Sqrt(size);
 
             // Generating field
-            for (int i = 0; i < Size; i++) {
+            for (int i = 0; i < GridSize; i++) {
 
                 // Space between small squares
-                if (i % spaceIndex == 0)
+                if (i % BoxSize == 0)
                     vertical += 1;
 
                 // Positioning at begining of the row
                 horizontal = startX;
 
-                for (int j = 0; j < Size; j++) {
+                for (int j = 0; j < GridSize; j++) {
 
                     // Space between small squares
-                    if (j % spaceIndex == 0)
+                    if (j % BoxSize == 0)
                         horizontal += 1;
 
                     // Creating new label
@@ -46,6 +47,7 @@ namespace sudoku
                         Size = new Size(CellSize, CellSize),
                         Location = new Point(horizontal, vertical),
                         BorderStyle = BorderStyle.FixedSingle,
+                        BackColor = Color.White,
                         TextAlign = ContentAlignment.MiddleCenter,
                         AutoSize = false,
                         Tag = new GridLocation(i, j)
@@ -95,6 +97,11 @@ namespace sudoku
             else if (me.Button == MouseButtons.Middle)
                 OnMiddleClick(sender, e);
             else return;
+
+            if (GridHasNoConflicts(sender) == false)
+                ((Label)sender).BackColor = Color.Tomato;
+            else
+                ((Label)sender).BackColor = Color.White;
         }
 
         private void OnLeftClick(object sender, EventArgs e)
@@ -124,6 +131,38 @@ namespace sudoku
         private void OnMiddleClick(object sender, EventArgs e)
         {
             ((Label)sender).Text = "";
+        }
+
+        private bool GridHasNoConflicts(object sender)
+        {
+            Label pressedLabel = sender as Label;
+            
+            // Getting indexes of our clicked cell
+            GridLocation index = (GridLocation)pressedLabel.Tag;
+            int x = index.i;
+            int y = index.j;
+
+            // Checking row
+            for (int i = 0; i < GridSize; i++)
+                if (i != y && Field[x, i].Text == pressedLabel.Text)
+                    return false;
+
+            // Checking column
+            for (int i = 0; i < GridSize; i++)
+                if (i != x && Field[i, y].Text == pressedLabel.Text)
+                    return false;
+
+            // Checking square
+            int sqStartX = x - x % BoxSize;
+            int sqEndX = sqStartX + BoxSize;
+            int sqStartY = y - y % BoxSize;
+            int sqEndY = sqStartY + BoxSize;
+            for (int i = sqStartX; i < sqEndX; i++)
+                for (int j = sqStartY; j < sqEndY; j++)
+                    if (i != x && j != y && Field[i, j].Text == pressedLabel.Text)
+                        return false;
+
+            return true;
         }
     }
 }
