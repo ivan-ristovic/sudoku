@@ -30,25 +30,114 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.msMainMenu = new System.Windows.Forms.MenuStrip();
-            this.msMainMenuTODO = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuGame = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuGameNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuGameNewCreatePuzzle = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuGameNewLoadFromFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuGameSolve = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuGameCheckSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.msMainMenuSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.msMainMenuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuRules = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // msMainMenu
             // 
             this.msMainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.msMainMenuTODO});
+            this.msMainMenuGame,
+            this.msMainMenuHelp});
             this.msMainMenu.Location = new System.Drawing.Point(0, 0);
             this.msMainMenu.Name = "msMainMenu";
             this.msMainMenu.Size = new System.Drawing.Size(309, 24);
             this.msMainMenu.TabIndex = 0;
             this.msMainMenu.Text = "menuStrip1";
             // 
-            // msMainMenuTODO
+            // msMainMenuGame
             // 
-            this.msMainMenuTODO.Name = "msMainMenuTODO";
-            this.msMainMenuTODO.Size = new System.Drawing.Size(52, 20);
-            this.msMainMenuTODO.Text = "TODO";
+            this.msMainMenuGame.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msMainMenuGameNew,
+            this.msMainMenuSeparator1,
+            this.msMainMenuGameCheckSolution,
+            this.msMainMenuGameSolve,
+            this.msMainMenuSeparator2,
+            this.msMainMenuExit});
+            this.msMainMenuGame.Name = "msMainMenuGame";
+            this.msMainMenuGame.Size = new System.Drawing.Size(50, 20);
+            this.msMainMenuGame.Text = "Game";
+            // 
+            // msMainMenuGameNew
+            // 
+            this.msMainMenuGameNew.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msMainMenuGameNewCreatePuzzle,
+            this.msMainMenuGameNewLoadFromFile});
+            this.msMainMenuGameNew.Name = "msMainMenuGameNew";
+            this.msMainMenuGameNew.Size = new System.Drawing.Size(153, 22);
+            this.msMainMenuGameNew.Text = "New";
+            // 
+            // msMainMenuGameNewCreatePuzzle
+            // 
+            this.msMainMenuGameNewCreatePuzzle.Name = "msMainMenuGameNewCreatePuzzle";
+            this.msMainMenuGameNewCreatePuzzle.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuGameNewCreatePuzzle.Text = "Create puzzle";
+            // 
+            // msMainMenuGameNewLoadFromFile
+            // 
+            this.msMainMenuGameNewLoadFromFile.Name = "msMainMenuGameNewLoadFromFile";
+            this.msMainMenuGameNewLoadFromFile.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuGameNewLoadFromFile.Text = "Load from file";
+            // 
+            // msMainMenuGameSolve
+            // 
+            this.msMainMenuGameSolve.Name = "msMainMenuGameSolve";
+            this.msMainMenuGameSolve.Size = new System.Drawing.Size(153, 22);
+            this.msMainMenuGameSolve.Text = "Solve";
+            // 
+            // msMainMenuGameCheckSolution
+            // 
+            this.msMainMenuGameCheckSolution.Name = "msMainMenuGameCheckSolution";
+            this.msMainMenuGameCheckSolution.Size = new System.Drawing.Size(153, 22);
+            this.msMainMenuGameCheckSolution.Text = "Check solution";
+            // 
+            // msMainMenuExit
+            // 
+            this.msMainMenuExit.Name = "msMainMenuExit";
+            this.msMainMenuExit.Size = new System.Drawing.Size(153, 22);
+            this.msMainMenuExit.Text = "Exit";
+            // 
+            // msMainMenuSeparator2
+            // 
+            this.msMainMenuSeparator2.Name = "msMainMenuSeparator2";
+            this.msMainMenuSeparator2.Size = new System.Drawing.Size(150, 6);
+            // 
+            // msMainMenuSeparator1
+            // 
+            this.msMainMenuSeparator1.Name = "msMainMenuSeparator1";
+            this.msMainMenuSeparator1.Size = new System.Drawing.Size(150, 6);
+            // 
+            // msMainMenuHelp
+            // 
+            this.msMainMenuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msMainMenuRules,
+            this.msMainMenuAbout});
+            this.msMainMenuHelp.Name = "msMainMenuHelp";
+            this.msMainMenuHelp.Size = new System.Drawing.Size(44, 20);
+            this.msMainMenuHelp.Text = "Help";
+            // 
+            // msMainMenuRules
+            // 
+            this.msMainMenuRules.Name = "msMainMenuRules";
+            this.msMainMenuRules.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuRules.Text = "Rules";
+            // 
+            // msMainMenuAbout
+            // 
+            this.msMainMenuAbout.Name = "msMainMenuAbout";
+            this.msMainMenuAbout.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuAbout.Text = "About";
             // 
             // MainForm
             // 
@@ -74,7 +163,18 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip msMainMenu;
-        private System.Windows.Forms.ToolStripMenuItem msMainMenuTODO;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuGame;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuGameNew;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuGameNewCreatePuzzle;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuGameNewLoadFromFile;
+        private System.Windows.Forms.ToolStripSeparator msMainMenuSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuGameCheckSolution;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuGameSolve;
+        private System.Windows.Forms.ToolStripSeparator msMainMenuSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuExit;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuHelp;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuRules;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuAbout;
     }
 }
 
