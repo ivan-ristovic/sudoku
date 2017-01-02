@@ -1,5 +1,5 @@
 # :sparkles: 9x9 Sudoku Solver :sparkles:
-![ss](https://raw.githubusercontent.com/IvanRistovic/sudoku/master/screenshots/2016-12-30.PNG)
+![ss](https://raw.githubusercontent.com/IvanRistovic/sudoku/master/screenshots/2017-01-02.PNG)
 
 ## :page_facing_up: Description
 Click **[here](https://en.wikipedia.org/wiki/Sudoku)** for more information about Sudoku and the rules.
