@@ -81,13 +81,13 @@
             // msMainMenuGameNewCreatePuzzle
             // 
             this.msMainMenuGameNewCreatePuzzle.Name = "msMainMenuGameNewCreatePuzzle";
-            this.msMainMenuGameNewCreatePuzzle.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuGameNewCreatePuzzle.Size = new System.Drawing.Size(148, 22);
             this.msMainMenuGameNewCreatePuzzle.Text = "Create puzzle";
             // 
             // msMainMenuGameNewLoadFromFile
             // 
             this.msMainMenuGameNewLoadFromFile.Name = "msMainMenuGameNewLoadFromFile";
-            this.msMainMenuGameNewLoadFromFile.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuGameNewLoadFromFile.Size = new System.Drawing.Size(148, 22);
             this.msMainMenuGameNewLoadFromFile.Text = "Load from file";
             this.msMainMenuGameNewLoadFromFile.Click += new System.EventHandler(this.msMainMenuGameNewLoadFromFile_Click);
             // 
@@ -107,6 +107,7 @@
             this.msMainMenuGameSolve.Name = "msMainMenuGameSolve";
             this.msMainMenuGameSolve.Size = new System.Drawing.Size(153, 22);
             this.msMainMenuGameSolve.Text = "Solve";
+            this.msMainMenuGameSolve.Click += new System.EventHandler(this.msMainMenuGameSolve_Click);
             // 
             // msMainMenuSeparator2
             // 

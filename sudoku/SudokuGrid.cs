@@ -10,6 +10,7 @@ namespace sudoku
         private int BoxSize;
         private int CellSize;
         private Label[,] Field;
+        private bool GridIsSolved = false;
 
 
         public SudokuGrid(int size, int cellSize, int startX, int startY, MainForm parent)
@@ -98,7 +99,7 @@ namespace sudoku
                 OnMiddleClick(sender, e);
             else return;
 
-            if (GridHasNoConflicts(sender) == false)
+            if (CellHasNoConflicts(sender) == false)
                 ((Label)sender).BackColor = Color.Tomato;
             else
                 ((Label)sender).BackColor = Color.White;
@@ -133,7 +134,7 @@ namespace sudoku
             ((Label)sender).Text = "";
         }
 
-        private bool GridHasNoConflicts(object sender)
+        private bool CellHasNoConflicts(object sender)
         {
             Label pressedLabel = sender as Label;
             
@@ -165,9 +166,61 @@ namespace sudoku
             return true;
         }
 
+        private bool GridHasNoConflicts()
+        {
+            foreach (Label i in Field)
+                if (i.Text != "" && CellHasNoConflicts(i) == false)
+                    return false;
+
+            return true;
+        }
+
         public void Solve()
         {
-            // TODO
+            if (GridIsSolved)
+                return;
+
+            if (GridHasNoConflicts())
+                SolveGrid(0, 0);
+            else
+                MessageBox.Show("Grid already has conflicts!", "Error");
+        }
+
+        private void SolveGrid(int row, int col)
+        {
+            // If we went outside of grid bounds
+            if (row == GridSize) {
+                GridIsSolved = true;
+                return;
+            }
+
+            // Next row and column indexes
+            int nextRow, nextCol;
+            
+            // Calculating next row and col
+            if (col == GridSize - 1) {
+                nextRow = row + 1;
+                nextCol = 0;
+            } else {
+                nextRow = row;
+                nextCol = col + 1;
+            }
+
+            // If the current position is already filled, we will skip it
+            if (Field[row, col].Text != "")
+                SolveGrid(nextRow, nextCol);
+            else {
+                // Otherwise we search for a candidate to fit that position
+                for (int candidate = 1; candidate <= GridSize; candidate++) {
+                    Field[row, col].Text = candidate.ToString();
+                    if (CellHasNoConflicts(Field[row, col])) {
+                        SolveGrid(nextRow, nextCol);
+                        if (GridIsSolved)
+                            return;
+                    }
+                    Field[row, col].Text = "";
+                }
+            }
         }
 
         public void LoadPuzzle(String[] content)
@@ -179,9 +232,19 @@ namespace sudoku
                 for (int i = 0; i < GridSize; i++) {
                     char[] line = content[i].ToCharArray();
                     for (int j = 0; j < GridSize; j++) {
+
                         if (Char.IsNumber(line[j]) == false)
                             throw new Exception();
-                        Field[i, j].Text = (line[j] == '0') ? "" : (line[j] - '0').ToString();
+
+                        if (line[j] != '0') {
+                            Field[i, j].Text = (line[j] - '0').ToString();
+                            Field[i, j].ForeColor = Color.Red;
+                            Field[i, j].Click -= OnFieldClick;
+                        } else {
+                            Field[i, j].Text = "";
+                        }
+
+                        Field[i, j].BackColor = Color.White;
                     }
                 }
             } catch (Exception) {

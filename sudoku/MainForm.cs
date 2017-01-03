@@ -45,5 +45,11 @@ namespace sudoku
                 }
             }
         }
+
+        // Game -> Solve
+        private void msMainMenuGameSolve_Click(object sender, EventArgs e)
+        {
+            MainGrid.Solve();
+        }
     }
 }
