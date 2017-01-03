@@ -34,11 +34,11 @@
             this.msMainMenuGameNew = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenuGameNewCreatePuzzle = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenuGameNewLoadFromFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.msMainMenuGameSolve = new System.Windows.Forms.ToolStripMenuItem();
-            this.msMainMenuGameCheckSolution = new System.Windows.Forms.ToolStripMenuItem();
-            this.msMainMenuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.msMainMenuSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.msMainMenuSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.msMainMenuGameCheckSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuGameSolve = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.msMainMenuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenuRules = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,12 +89,12 @@
             this.msMainMenuGameNewLoadFromFile.Name = "msMainMenuGameNewLoadFromFile";
             this.msMainMenuGameNewLoadFromFile.Size = new System.Drawing.Size(152, 22);
             this.msMainMenuGameNewLoadFromFile.Text = "Load from file";
+            this.msMainMenuGameNewLoadFromFile.Click += new System.EventHandler(this.msMainMenuGameNewLoadFromFile_Click);
             // 
-            // msMainMenuGameSolve
+            // msMainMenuSeparator1
             // 
-            this.msMainMenuGameSolve.Name = "msMainMenuGameSolve";
-            this.msMainMenuGameSolve.Size = new System.Drawing.Size(153, 22);
-            this.msMainMenuGameSolve.Text = "Solve";
+            this.msMainMenuSeparator1.Name = "msMainMenuSeparator1";
+            this.msMainMenuSeparator1.Size = new System.Drawing.Size(150, 6);
             // 
             // msMainMenuGameCheckSolution
             // 
@@ -102,21 +102,22 @@
             this.msMainMenuGameCheckSolution.Size = new System.Drawing.Size(153, 22);
             this.msMainMenuGameCheckSolution.Text = "Check solution";
             // 
-            // msMainMenuExit
+            // msMainMenuGameSolve
             // 
-            this.msMainMenuExit.Name = "msMainMenuExit";
-            this.msMainMenuExit.Size = new System.Drawing.Size(153, 22);
-            this.msMainMenuExit.Text = "Exit";
+            this.msMainMenuGameSolve.Name = "msMainMenuGameSolve";
+            this.msMainMenuGameSolve.Size = new System.Drawing.Size(153, 22);
+            this.msMainMenuGameSolve.Text = "Solve";
             // 
             // msMainMenuSeparator2
             // 
             this.msMainMenuSeparator2.Name = "msMainMenuSeparator2";
             this.msMainMenuSeparator2.Size = new System.Drawing.Size(150, 6);
             // 
-            // msMainMenuSeparator1
+            // msMainMenuExit
             // 
-            this.msMainMenuSeparator1.Name = "msMainMenuSeparator1";
-            this.msMainMenuSeparator1.Size = new System.Drawing.Size(150, 6);
+            this.msMainMenuExit.Name = "msMainMenuExit";
+            this.msMainMenuExit.Size = new System.Drawing.Size(153, 22);
+            this.msMainMenuExit.Text = "Exit";
             // 
             // msMainMenuHelp
             // 
@@ -130,13 +131,13 @@
             // msMainMenuRules
             // 
             this.msMainMenuRules.Name = "msMainMenuRules";
-            this.msMainMenuRules.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuRules.Size = new System.Drawing.Size(107, 22);
             this.msMainMenuRules.Text = "Rules";
             // 
             // msMainMenuAbout
             // 
             this.msMainMenuAbout.Name = "msMainMenuAbout";
-            this.msMainMenuAbout.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuAbout.Size = new System.Drawing.Size(107, 22);
             this.msMainMenuAbout.Text = "About";
             // 
             // MainForm

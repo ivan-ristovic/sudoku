@@ -110,7 +110,7 @@ namespace sudoku
 
             if (l.Text == "")
                 l.Text = "1";
-            else if (l.Text == "9")
+            else if (l.Text == GridSize.ToString())
                 l.Text = "1";
             else
                 l.Text = (int.Parse(l.Text) + 1).ToString();
@@ -121,9 +121,9 @@ namespace sudoku
             Label l = sender as Label;
 
             if (l.Text == "")
-                l.Text = "9";
+                l.Text = GridSize.ToString();
             else if (l.Text == "1")
-                l.Text = "9";
+                l.Text = GridSize.ToString();
             else
                 l.Text = (int.Parse(l.Text) - 1).ToString();
         }
@@ -163,6 +163,30 @@ namespace sudoku
                         return false;
 
             return true;
+        }
+
+        public void Solve()
+        {
+            // TODO
+        }
+
+        public void LoadPuzzle(String[] content)
+        {
+
+            // For now only supported puzzles to load are 9x9
+
+            try {
+                for (int i = 0; i < GridSize; i++) {
+                    char[] line = content[i].ToCharArray();
+                    for (int j = 0; j < GridSize; j++) {
+                        if (Char.IsNumber(line[j]) == false)
+                            throw new Exception();
+                        Field[i, j].Text = (line[j] == '0') ? "" : (line[j] - '0').ToString();
+                    }
+                }
+            } catch (Exception) {
+                MessageBox.Show("Invalid file content!");
+            }
         }
     }
 }
