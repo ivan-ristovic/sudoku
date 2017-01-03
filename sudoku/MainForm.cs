@@ -22,9 +22,20 @@ namespace sudoku
             MainGrid = new SudokuGrid(GRID_SIZE, CELL_SIZE, 20, 40, this);
         }
 
+        // Game -> New -> Create puzzle
+        private void msMainMenuGameNewCreatePuzzle_Click(object sender, EventArgs e)
+        {
+            MainGrid.ClearField();
+            msMainMenuFieldUnlock.PerformClick();
+        }
+
         // Game -> New -> Load from file
         private void msMainMenuGameNewLoadFromFile_Click(object sender, EventArgs e)
         {
+            // Clearing current field and unlocking
+            MainGrid.ClearField();
+            msMainMenuFieldUnlock.PerformClick();
+
             // Creating new FileDialog which will handle file opening
             OpenFileDialog fileDialog = new OpenFileDialog()
             {
@@ -44,6 +55,8 @@ namespace sudoku
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
             }
+
+            msMainMenuFieldLock.PerformClick();
         }
 
         // Game -> Solve
@@ -51,5 +64,35 @@ namespace sudoku
         {
             MainGrid.Solve();
         }
+
+        // Field -> Lock
+        private void msMainMenuFieldLock_Click(object sender, EventArgs e)
+        {
+            if (MainGrid.HasNoConflicts() == false) {
+                MessageBox.Show("Your grid has conflicts and therefore cannot be locked!", "Error");
+                return;
+            }
+
+            MainGrid.LockField();
+            lblLockedField.Visible = true;
+            msMainMenuFieldLock.Enabled = false;
+            msMainMenuFieldUnlock.Enabled = true;
+        }
+
+        // Field -> Unlock
+        private void msMainMenuFieldUnlock_Click(object sender, EventArgs e)
+        {
+            MainGrid.UnlockField();
+            lblLockedField.Visible = false;
+            msMainMenuFieldLock.Enabled = true;
+            msMainMenuFieldUnlock.Enabled = false;
+        }
+
+        // Field -> Clear
+        private void msMainMenuFieldClear_Click(object sender, EventArgs e)
+        {
+            MainGrid.ClearField();
+        }
+
     }
 }

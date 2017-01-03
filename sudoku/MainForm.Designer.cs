@@ -42,6 +42,11 @@
             this.msMainMenuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenuRules = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuField = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuFieldLock = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuFieldUnlock = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblLockedField = new System.Windows.Forms.Label();
+            this.msMainMenuFieldClear = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +54,7 @@
             // 
             this.msMainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.msMainMenuGame,
+            this.msMainMenuField,
             this.msMainMenuHelp});
             this.msMainMenu.Location = new System.Drawing.Point(0, 0);
             this.msMainMenu.Name = "msMainMenu";
@@ -81,13 +87,14 @@
             // msMainMenuGameNewCreatePuzzle
             // 
             this.msMainMenuGameNewCreatePuzzle.Name = "msMainMenuGameNewCreatePuzzle";
-            this.msMainMenuGameNewCreatePuzzle.Size = new System.Drawing.Size(148, 22);
+            this.msMainMenuGameNewCreatePuzzle.Size = new System.Drawing.Size(152, 22);
             this.msMainMenuGameNewCreatePuzzle.Text = "Create puzzle";
+            this.msMainMenuGameNewCreatePuzzle.Click += new System.EventHandler(this.msMainMenuGameNewCreatePuzzle_Click);
             // 
             // msMainMenuGameNewLoadFromFile
             // 
             this.msMainMenuGameNewLoadFromFile.Name = "msMainMenuGameNewLoadFromFile";
-            this.msMainMenuGameNewLoadFromFile.Size = new System.Drawing.Size(148, 22);
+            this.msMainMenuGameNewLoadFromFile.Size = new System.Drawing.Size(152, 22);
             this.msMainMenuGameNewLoadFromFile.Text = "Load from file";
             this.msMainMenuGameNewLoadFromFile.Click += new System.EventHandler(this.msMainMenuGameNewLoadFromFile_Click);
             // 
@@ -132,20 +139,65 @@
             // msMainMenuRules
             // 
             this.msMainMenuRules.Name = "msMainMenuRules";
-            this.msMainMenuRules.Size = new System.Drawing.Size(107, 22);
+            this.msMainMenuRules.Size = new System.Drawing.Size(152, 22);
             this.msMainMenuRules.Text = "Rules";
             // 
             // msMainMenuAbout
             // 
             this.msMainMenuAbout.Name = "msMainMenuAbout";
-            this.msMainMenuAbout.Size = new System.Drawing.Size(107, 22);
+            this.msMainMenuAbout.Size = new System.Drawing.Size(152, 22);
             this.msMainMenuAbout.Text = "About";
+            // 
+            // msMainMenuField
+            // 
+            this.msMainMenuField.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msMainMenuFieldLock,
+            this.msMainMenuFieldUnlock,
+            this.msMainMenuFieldClear});
+            this.msMainMenuField.Name = "msMainMenuField";
+            this.msMainMenuField.Size = new System.Drawing.Size(44, 20);
+            this.msMainMenuField.Text = "Field";
+            // 
+            // msMainMenuFieldLock
+            // 
+            this.msMainMenuFieldLock.Name = "msMainMenuFieldLock";
+            this.msMainMenuFieldLock.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuFieldLock.Text = "Lock";
+            this.msMainMenuFieldLock.Click += new System.EventHandler(this.msMainMenuFieldLock_Click);
+            // 
+            // msMainMenuFieldUnlock
+            // 
+            this.msMainMenuFieldUnlock.Enabled = false;
+            this.msMainMenuFieldUnlock.Name = "msMainMenuFieldUnlock";
+            this.msMainMenuFieldUnlock.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuFieldUnlock.Text = "Unlock";
+            this.msMainMenuFieldUnlock.Click += new System.EventHandler(this.msMainMenuFieldUnlock_Click);
+            // 
+            // lblLockedField
+            // 
+            this.lblLockedField.AutoSize = true;
+            this.lblLockedField.BackColor = System.Drawing.Color.White;
+            this.lblLockedField.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLockedField.Location = new System.Drawing.Point(289, -3);
+            this.lblLockedField.Name = "lblLockedField";
+            this.lblLockedField.Size = new System.Drawing.Size(20, 25);
+            this.lblLockedField.TabIndex = 1;
+            this.lblLockedField.Text = "⚷";
+            this.lblLockedField.Visible = false;
+            // 
+            // msMainMenuFieldClear
+            // 
+            this.msMainMenuFieldClear.Name = "msMainMenuFieldClear";
+            this.msMainMenuFieldClear.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuFieldClear.Text = "Clear";
+            this.msMainMenuFieldClear.Click += new System.EventHandler(this.msMainMenuFieldClear_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(309, 326);
+            this.Controls.Add(this.lblLockedField);
             this.Controls.Add(this.msMainMenu);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -177,6 +229,11 @@
         private System.Windows.Forms.ToolStripMenuItem msMainMenuHelp;
         private System.Windows.Forms.ToolStripMenuItem msMainMenuRules;
         private System.Windows.Forms.ToolStripMenuItem msMainMenuAbout;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuField;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuFieldLock;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuFieldUnlock;
+        private System.Windows.Forms.Label lblLockedField;
+        private System.Windows.Forms.ToolStripMenuItem msMainMenuFieldClear;
     }
 }
 

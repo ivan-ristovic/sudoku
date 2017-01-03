@@ -48,6 +48,7 @@ namespace sudoku
                         Size = new Size(CellSize, CellSize),
                         Location = new Point(horizontal, vertical),
                         BorderStyle = BorderStyle.FixedSingle,
+                        ForeColor = Color.Black,
                         BackColor = Color.White,
                         TextAlign = ContentAlignment.MiddleCenter,
                         AutoSize = false,
@@ -99,7 +100,7 @@ namespace sudoku
                 OnMiddleClick(sender, e);
             else return;
 
-            if (CellHasNoConflicts(sender) == false)
+            if (HasNoConflictsAt(sender) == false)
                 ((Label)sender).BackColor = Color.Tomato;
             else
                 ((Label)sender).BackColor = Color.White;
@@ -134,9 +135,13 @@ namespace sudoku
             ((Label)sender).Text = "";
         }
 
-        private bool CellHasNoConflicts(object sender)
+        private bool HasNoConflictsAt(object sender)
         {
             Label pressedLabel = sender as Label;
+
+            // Empty cells don't have conflicts
+            if (pressedLabel.Text == "")
+                return true;
             
             // Getting indexes of our clicked cell
             GridLocation index = (GridLocation)pressedLabel.Tag;
@@ -166,10 +171,10 @@ namespace sudoku
             return true;
         }
 
-        private bool GridHasNoConflicts()
+        public bool HasNoConflicts()
         {
             foreach (Label i in Field)
-                if (i.Text != "" && CellHasNoConflicts(i) == false)
+                if (HasNoConflictsAt(i) == false)
                     return false;
 
             return true;
@@ -180,7 +185,7 @@ namespace sudoku
             if (GridIsSolved)
                 return;
 
-            if (GridHasNoConflicts())
+            if (HasNoConflicts())
                 SolveGrid(0, 0);
             else
                 MessageBox.Show("Grid already has conflicts!", "Error");
@@ -213,7 +218,7 @@ namespace sudoku
                 // Otherwise we search for a candidate to fit that position
                 for (int candidate = 1; candidate <= GridSize; candidate++) {
                     Field[row, col].Text = candidate.ToString();
-                    if (CellHasNoConflicts(Field[row, col])) {
+                    if (HasNoConflictsAt(Field[row, col])) {
                         SolveGrid(nextRow, nextCol);
                         if (GridIsSolved)
                             return;
@@ -236,19 +241,63 @@ namespace sudoku
                         if (Char.IsNumber(line[j]) == false)
                             throw new Exception();
 
-                        if (line[j] != '0') {
+                        if (line[j] != '0')
                             Field[i, j].Text = (line[j] - '0').ToString();
-                            Field[i, j].ForeColor = Color.Red;
-                            Field[i, j].Click -= OnFieldClick;
-                        } else {
+                        else
                             Field[i, j].Text = "";
-                        }
-
-                        Field[i, j].BackColor = Color.White;
                     }
                 }
             } catch (Exception) {
                 MessageBox.Show("Invalid file content!");
+            }
+
+            UpdateFieldColors();
+        }
+
+        public void ClearField()
+        {
+            foreach (Label cell in Field)
+                if (cell.ForeColor == Color.Black) {
+                    cell.Text = "";
+                    cell.BackColor = Color.White;
+                }
+
+            GridIsSolved = false;
+        }
+
+        private void UpdateFieldColors()
+        {
+            foreach (Label cell in Field) {
+                if (cell.Text == "")
+                    cell.ForeColor = Color.Black;
+                else
+                    cell.ForeColor = Color.Red;
+
+                cell.BackColor = Color.White;
+            }
+        }
+
+        public void LockField()
+        {
+            foreach (Label cell in Field) {
+                if (cell.Text != "") {
+                    cell.ForeColor = Color.Red;
+                    cell.Click -= OnFieldClick;
+                } else
+                    cell.ForeColor = Color.Black;
+
+                cell.BackColor = Color.White;
+            }
+        }
+
+        public void UnlockField()
+        {
+            foreach (Label cell in Field) {
+                if (cell.Text != "")
+                    cell.Click += OnFieldClick;
+
+                cell.ForeColor = Color.Black;
+                cell.BackColor = Color.White;
             }
         }
     }
