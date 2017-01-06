@@ -59,10 +59,30 @@ namespace sudoku
             msMainMenuFieldLock.PerformClick();
         }
 
+        // Game -> Check Solution
+        private void msMainMenuGameCheckSolution_Click(object sender, EventArgs e)
+        {
+            // TODO check if grid is filled completely
+
+            if (MainGrid.HasNoConflicts())
+                MessageBox.Show("No conflicts in the grid!", "Information");
+            else
+                MessageBox.Show("There are conflicts in the grid!", "Information");
+        }
+
         // Game -> Solve
         private void msMainMenuGameSolve_Click(object sender, EventArgs e)
         {
             MainGrid.Solve();
+        }
+
+        // Game -> Exit
+        private void msMainMenuExit_Click(object sender, EventArgs e)
+        {
+            if (Application.MessageLoop)
+                Application.Exit();
+            else
+                Environment.Exit(1);
         }
 
         // Field -> Lock
@@ -93,6 +113,5 @@ namespace sudoku
         {
             MainGrid.ClearField();
         }
-
     }
 }

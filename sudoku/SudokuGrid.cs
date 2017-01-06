@@ -217,6 +217,7 @@ namespace sudoku
             else {
                 // Otherwise we search for a candidate to fit that position
                 for (int candidate = 1; candidate <= GridSize; candidate++) {
+                    // FIXME this is really slow, optimize!
                     Field[row, col].Text = candidate.ToString();
                     if (HasNoConflictsAt(Field[row, col])) {
                         SolveGrid(nextRow, nextCol);

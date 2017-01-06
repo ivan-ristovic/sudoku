@@ -39,14 +39,14 @@
             this.msMainMenuGameSolve = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenuSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.msMainMenuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.msMainMenuHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.msMainMenuRules = new System.Windows.Forms.ToolStripMenuItem();
-            this.msMainMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenuField = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenuFieldLock = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenuFieldUnlock = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblLockedField = new System.Windows.Forms.Label();
             this.msMainMenuFieldClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuRules = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMainMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblLockedField = new System.Windows.Forms.Label();
             this.msMainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,14 +87,14 @@
             // msMainMenuGameNewCreatePuzzle
             // 
             this.msMainMenuGameNewCreatePuzzle.Name = "msMainMenuGameNewCreatePuzzle";
-            this.msMainMenuGameNewCreatePuzzle.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuGameNewCreatePuzzle.Size = new System.Drawing.Size(148, 22);
             this.msMainMenuGameNewCreatePuzzle.Text = "Create puzzle";
             this.msMainMenuGameNewCreatePuzzle.Click += new System.EventHandler(this.msMainMenuGameNewCreatePuzzle_Click);
             // 
             // msMainMenuGameNewLoadFromFile
             // 
             this.msMainMenuGameNewLoadFromFile.Name = "msMainMenuGameNewLoadFromFile";
-            this.msMainMenuGameNewLoadFromFile.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuGameNewLoadFromFile.Size = new System.Drawing.Size(148, 22);
             this.msMainMenuGameNewLoadFromFile.Text = "Load from file";
             this.msMainMenuGameNewLoadFromFile.Click += new System.EventHandler(this.msMainMenuGameNewLoadFromFile_Click);
             // 
@@ -108,6 +108,7 @@
             this.msMainMenuGameCheckSolution.Name = "msMainMenuGameCheckSolution";
             this.msMainMenuGameCheckSolution.Size = new System.Drawing.Size(153, 22);
             this.msMainMenuGameCheckSolution.Text = "Check solution";
+            this.msMainMenuGameCheckSolution.Click += new System.EventHandler(this.msMainMenuGameCheckSolution_Click);
             // 
             // msMainMenuGameSolve
             // 
@@ -126,27 +127,7 @@
             this.msMainMenuExit.Name = "msMainMenuExit";
             this.msMainMenuExit.Size = new System.Drawing.Size(153, 22);
             this.msMainMenuExit.Text = "Exit";
-            // 
-            // msMainMenuHelp
-            // 
-            this.msMainMenuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.msMainMenuRules,
-            this.msMainMenuAbout});
-            this.msMainMenuHelp.Name = "msMainMenuHelp";
-            this.msMainMenuHelp.Size = new System.Drawing.Size(44, 20);
-            this.msMainMenuHelp.Text = "Help";
-            // 
-            // msMainMenuRules
-            // 
-            this.msMainMenuRules.Name = "msMainMenuRules";
-            this.msMainMenuRules.Size = new System.Drawing.Size(152, 22);
-            this.msMainMenuRules.Text = "Rules";
-            // 
-            // msMainMenuAbout
-            // 
-            this.msMainMenuAbout.Name = "msMainMenuAbout";
-            this.msMainMenuAbout.Size = new System.Drawing.Size(152, 22);
-            this.msMainMenuAbout.Text = "About";
+            this.msMainMenuExit.Click += new System.EventHandler(this.msMainMenuExit_Click);
             // 
             // msMainMenuField
             // 
@@ -161,7 +142,7 @@
             // msMainMenuFieldLock
             // 
             this.msMainMenuFieldLock.Name = "msMainMenuFieldLock";
-            this.msMainMenuFieldLock.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuFieldLock.Size = new System.Drawing.Size(111, 22);
             this.msMainMenuFieldLock.Text = "Lock";
             this.msMainMenuFieldLock.Click += new System.EventHandler(this.msMainMenuFieldLock_Click);
             // 
@@ -169,9 +150,37 @@
             // 
             this.msMainMenuFieldUnlock.Enabled = false;
             this.msMainMenuFieldUnlock.Name = "msMainMenuFieldUnlock";
-            this.msMainMenuFieldUnlock.Size = new System.Drawing.Size(152, 22);
+            this.msMainMenuFieldUnlock.Size = new System.Drawing.Size(111, 22);
             this.msMainMenuFieldUnlock.Text = "Unlock";
             this.msMainMenuFieldUnlock.Click += new System.EventHandler(this.msMainMenuFieldUnlock_Click);
+            // 
+            // msMainMenuFieldClear
+            // 
+            this.msMainMenuFieldClear.Name = "msMainMenuFieldClear";
+            this.msMainMenuFieldClear.Size = new System.Drawing.Size(111, 22);
+            this.msMainMenuFieldClear.Text = "Clear";
+            this.msMainMenuFieldClear.Click += new System.EventHandler(this.msMainMenuFieldClear_Click);
+            // 
+            // msMainMenuHelp
+            // 
+            this.msMainMenuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msMainMenuRules,
+            this.msMainMenuAbout});
+            this.msMainMenuHelp.Name = "msMainMenuHelp";
+            this.msMainMenuHelp.Size = new System.Drawing.Size(44, 20);
+            this.msMainMenuHelp.Text = "Help";
+            // 
+            // msMainMenuRules
+            // 
+            this.msMainMenuRules.Name = "msMainMenuRules";
+            this.msMainMenuRules.Size = new System.Drawing.Size(107, 22);
+            this.msMainMenuRules.Text = "Rules";
+            // 
+            // msMainMenuAbout
+            // 
+            this.msMainMenuAbout.Name = "msMainMenuAbout";
+            this.msMainMenuAbout.Size = new System.Drawing.Size(107, 22);
+            this.msMainMenuAbout.Text = "About";
             // 
             // lblLockedField
             // 
@@ -184,13 +193,6 @@
             this.lblLockedField.TabIndex = 1;
             this.lblLockedField.Text = "⚷";
             this.lblLockedField.Visible = false;
-            // 
-            // msMainMenuFieldClear
-            // 
-            this.msMainMenuFieldClear.Name = "msMainMenuFieldClear";
-            this.msMainMenuFieldClear.Size = new System.Drawing.Size(152, 22);
-            this.msMainMenuFieldClear.Text = "Clear";
-            this.msMainMenuFieldClear.Click += new System.EventHandler(this.msMainMenuFieldClear_Click);
             // 
             // MainForm
             // 
