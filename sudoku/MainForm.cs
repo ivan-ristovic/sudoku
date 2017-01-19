@@ -113,5 +113,16 @@ namespace sudoku
         {
             MainGrid.ClearField();
         }
+
+        // Help -> Rules
+        private void msMainMenuRules_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("The classic Sudoku game involves a grid of 81 squares. The grid is divided into nine blocks, each containing nine squares.\n\nThe rules of the game are simple: each of the nine blocks has to contain all the numbers 1 - 9 within its squares.Each number can only appear once in a row, column or box.\n\nThe difficulty lies in that each vertical nine - square column, or horizontal nine - square line across, within the larger square, must also contain the numbers 1 - 9, without repetition or omission.", "Rules");
+        }
+
+        private void msMainMenuAbout_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This is a 9x9 (for now) Sudoku solver. Coded in C# using Visual Studio 2017.\n\nYou can load whatever puzzle you want. There are two ways to do so:\n\n1. Manually entering numbers, and then solving the puzzle (not reccomended as I have not yet added validation checks)\n2. By creating your own.txt file.You can check puzzles / puzzle1.txt and see what format is required.You can then load the file using Game->New->Load from file\n\nLeft click increments the value in the clicked cell. Right click decrements the value in the clicked cell.Middle click deletes the value in the clicked cell.", "About");
+        }
     }
 }

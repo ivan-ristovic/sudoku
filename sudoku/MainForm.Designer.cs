@@ -173,14 +173,16 @@
             // msMainMenuRules
             // 
             this.msMainMenuRules.Name = "msMainMenuRules";
-            this.msMainMenuRules.Size = new System.Drawing.Size(107, 22);
+            this.msMainMenuRules.Size = new System.Drawing.Size(152, 22);
             this.msMainMenuRules.Text = "Rules";
+            this.msMainMenuRules.Click += new System.EventHandler(this.msMainMenuRules_Click);
             // 
             // msMainMenuAbout
             // 
             this.msMainMenuAbout.Name = "msMainMenuAbout";
-            this.msMainMenuAbout.Size = new System.Drawing.Size(107, 22);
+            this.msMainMenuAbout.Size = new System.Drawing.Size(152, 22);
             this.msMainMenuAbout.Text = "About";
+            this.msMainMenuAbout.Click += new System.EventHandler(this.msMainMenuAbout_Click);
             // 
             // lblLockedField
             // 
